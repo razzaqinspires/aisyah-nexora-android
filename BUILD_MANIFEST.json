@@ -1,0 +1,18 @@
+{
+  "project_id": "PRJ-AISYAH-ANDROID-001",
+  "version": "0.1.0",
+  "assistant_persona": "Aisyah",
+  "ai_system": "Nexora",
+  "platform": "Android",
+  "file_count": 24,
+  "zip_integrity": "PASS",
+  "zip_size_bytes": 19219,
+  "sha256": "d141ce53ee993b9d09d98f4d671e017fc006c8d32a1ea8f4fc8f423154b98504",
+  "validation": {
+    "flutter_compile": "NOT RUN - Flutter SDK unavailable",
+    "backend_tests": "NOT RUN - dependencies not installed in authoring environment",
+    "apk": "NOT BUILT",
+    "deployment": "NOT RUN",
+    "node_syntax_check": "PASS (node --check on backend source and test files)"
+  }
+}
