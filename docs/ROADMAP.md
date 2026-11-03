@@ -1,40 +1,46 @@
 # Roadmap
 
-## Phase A — Android shell and backend foundation
-- [x] Create initial Flutter chat shell
-- [x] Create Node.js health and chat API skeleton
-- [x] Add Firebase ID-token verification boundary
-- [x] Add local-first/cloud-fallback model router interface
-- [x] Add initial PostgreSQL schema and RLS policies
-- [ ] Configure Firebase project and Google sign-in
-- [ ] Compile and run Android debug build
-- [ ] Run backend tests in target environment
+## Phase 1 — Android and Nexora foundation
+- [x] Flutter chat shell
+- [x] Node.js API skeleton
+- [x] Local-first/cloud-fallback model router interface
+- [x] PostgreSQL + pgvector initial schema
 
-## Phase B — Account and data isolation
-- [ ] Google sign-in UI
-- [ ] Firebase token refresh and secure storage
-- [ ] Firebase UID to internal user mapping
-- [ ] Database transaction wrapper with SET LOCAL app.current_user_id
-- [ ] Cross-user isolation integration tests
+## Phase 2 — Google Authentication & User Identity
+- [x] Firebase/Google sign-in and auth gate source
+- [x] Fresh Firebase ID token for protected API requests
+- [x] Backend Firebase token verification and internal user provisioning
+- [x] `/v1/me` and transaction-local RLS helper
+- [ ] Real Firebase, PostgreSQL, RLS and Android device validation
 
-## Phase C — Chat and memory
-- [ ] Conversation CRUD
-- [ ] Message persistence
-- [ ] Embedding generation and pgvector retrieval
-- [ ] Private RAG with user-level filters
-- [ ] Memory review/edit/delete controls
-- [ ] Explicit approval workflow for shared knowledge
+## Phase 3 — Conversation persistence and private memory
+- [x] Conversation and message persistence APIs
+- [x] User-scoped conversation history
+- [x] Private memory CRUD and optional pgvector retrieval
+- [x] Android history and memory screens
+- [ ] Real database, embedding and Android validation
 
-## Phase D — Nexora inference
-- [ ] Verify target local model availability and hardware compatibility
-- [ ] Provider health checks and circuit breaker
-- [ ] Cloud fallback configuration
-- [ ] Streaming responses
-- [ ] Token/cost limits and request audit metadata
+## Phase 4 — Memory quality and learning governance
+- [x] Explicit memory proposals and user approval
+- [x] Expiry, normalized deduplication and importance scoring
+- [x] Reviewer approval/rejection for shared knowledge with audit trail
+- [ ] Apply migration 004 and validate reviewer RLS in PostgreSQL
 
-## Phase E — Voice and embodiment preparation
-- [ ] Speech-to-text
-- [ ] Text-to-speech
-- [ ] Voice conversation mode
-- [ ] Camera/vision integration
-- [ ] Robot communication abstraction
+## Phase 5 — Knowledge Retrieval & Cognitive Context Engine
+- [x] Retrieve private memories separately from approved shared knowledge
+- [x] Semantic search for approved shared knowledge
+- [x] Full-text fallback when embeddings are unavailable
+- [x] Weighted context ranking
+- [x] Conservative potential-conflict signal and uncertainty-aware model prompt
+- [x] Step-by-step Indonesian install/run guide
+- [ ] Apply migration 005 to real PostgreSQL
+- [ ] Validate vector retrieval, full-text fallback and cross-user isolation
+- [ ] Evaluate retrieval precision/recall on a curated test set
+- [ ] Run full backend tests, Flutter analyze/build and Android device tests
+
+## Phase 6 — Evaluation & operational hardening (proposed)
+- Retrieval benchmark dataset and measurable precision/recall
+- Context provenance display and user feedback
+- Prompt-injection hardening for retrieved content
+- Observability, rate limits, backups and retention controls
+- Load and security tests before production

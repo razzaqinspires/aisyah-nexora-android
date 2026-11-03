@@ -16,3 +16,9 @@ google-services.json
 GoogleService-Info.plist
 service-account*.json
 coverage/
+
+/logs/
+
+backend/test/*.bak
+
+backend/test/*.before-*

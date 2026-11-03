@@ -1,18 +1,56 @@
 {
   "project_id": "PRJ-AISYAH-ANDROID-001",
-  "version": "0.1.0",
+  "registry_id": "RV-022",
+  "version": "0.5.0",
   "assistant_persona": "Aisyah",
   "ai_system": "Nexora",
   "platform": "Android",
-  "file_count": 24,
-  "zip_integrity": "PASS",
-  "zip_size_bytes": 19219,
-  "sha256": "d141ce53ee993b9d09d98f4d671e017fc006c8d32a1ea8f4fc8f423154b98504",
+  "phase": "Phase 5 — Knowledge Retrieval & Cognitive Context Engine",
+  "phase_name": "Knowledge Retrieval & Cognitive Context Engine",
+  "file_count": 55,
   "validation": {
-    "flutter_compile": "NOT RUN - Flutter SDK unavailable",
-    "backend_tests": "NOT RUN - dependencies not installed in authoring environment",
-    "apk": "NOT BUILT",
-    "deployment": "NOT RUN",
-    "node_syntax_check": "PASS (node --check on backend source and test files)"
-  }
+    "node_syntax": "pass_npm_run_check",
+    "context_engine_unit_tests": "3/3_pass",
+    "full_backend_tests": "not_run_dependencies_not_installed",
+    "postgresql_integration": "not_run_no_database_credentials",
+    "flutter_analyze_build": "not_run_flutter_sdk_not_available",
+    "firebase_device_tests": "not_run_firebase_not_configured",
+    "apk": "not_built"
+  },
+  "phase_4_source": [
+    "Explicit opt-in memory proposal extraction; proposals require owner approval before becoming private memories",
+    "Sensitive-looking phrases are excluded by a conservative heuristic",
+    "Pending proposals can be reviewed from Android Memory screen or chat approval dialog",
+    "Per-user normalized SHA-256 memory deduplication and duplicate merge on edit",
+    "Deterministic importance scoring and configurable memory expiry",
+    "Semantic retrieval excludes unapproved and expired memories",
+    "Shared-knowledge submission queue with Firebase UID reviewer allowlist",
+    "Reviewer approve/reject audit trail; only approved content enters shared_knowledge",
+    "Database migration 004 and RLS smoke-test additions"
+  ],
+  "security_notes": [
+    "User identity is derived from verified Firebase token and internal PostgreSQL UUID.",
+    "Memory proposals and submissions are user-scoped using transaction-local RLS.",
+    "Only server-side allowlisted Firebase UIDs can review shared-knowledge submissions.",
+    "Personal memories are not promoted to shared knowledge automatically.",
+    "Runtime DB role must not own protected tables or have SUPERUSER/BYPASSRLS.",
+    "Reviewer allowlist, service-account credentials, database URLs and model keys stay on backend."
+  ],
+  "status": "source_implemented_external_validation_pending",
+  "added_files": [
+    "backend/src/repositories/knowledge-retrieval-repository.js",
+    "backend/src/services/context-engine.js",
+    "backend/test/context-engine.test.js",
+    "database/migrations/005_knowledge_retrieval.sql",
+    "docs/PHASE_5_CONTEXT_ENGINE.md",
+    "docs/INSTALL_AND_RUN_PHASE_5_ID.md"
+  ],
+  "phase_5_source": [
+    "Separate authenticated per-user private-memory retrieval and globally approved shared-knowledge retrieval",
+    "Semantic shared-knowledge retrieval with PostgreSQL full-text fallback",
+    "Weighted ranking using similarity, memory importance and reviewer confidence",
+    "Conservative potential-conflict signal; model instructed to express uncertainty",
+    "Approval-time shared-knowledge embedding and normalized duplicate prevention",
+    "Migration 005 and Indonesian step-by-step installation/run guide"
+  ]
 }
